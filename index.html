@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <title>Generator haseł</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>Generator haseł</h1>
+
+<label>Długość hasła:</label><br>
+<input type="number" id="length" value="12"><br><br>
+
+<label>
+  <input type="checkbox" id="numbers" checked>
+  Cyfry
+</label><br>
+
+<label>
+  <input type="checkbox" id="symbols">
+  Znaki specjalne
+</label><br><br>
+
+<button id="generateBtn">Generuj hasło</button>
+
+<p id="password"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
