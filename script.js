@@ -1,26 +1,19 @@
-document.getElementById("generateBtn").onclick = function () {
-  const length = parseInt(document.getElementById("length").value);
+function generatePassword() {
+    const length = document.getElementById("length").value;
+    const includeUppercase = document.getElementById("uppercase").checked;
+    const includeNumbers = document.getElementById("numbers").checked;
+    const includeSymbols = document.getElementById("symbols").checked;
 
-  if (length < 4) {
-    alert("Hasło musi mieć co najmniej 4 znaki");
-    return;
-  }
+    let characters = "abcdefghijklmnopqrstuvwxyz";
+    if (includeUppercase) characters += "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    if (includeNumbers) characters += "0123456789";
+    if (includeSymbols) characters += "!@#$%^&*()_+[]{}<>?";
 
-  const useNumbers = document.getElementById("numbers").checked;
-  const useSymbols = document.getElementById("symbols").checked;
+    let password = "";
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        password += characters[randomIndex];
+    }
 
-  let chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-
-  if (useNumbers) chars += "0123456789";
-  if (useSymbols) chars += "!@#$%^&*";
-
-  let password = "";
-
-  for (let i = 0; i < length; i++) {
-    const randomIndex = Math.floor(Math.random() * chars.length);
-    password += chars[randomIndex];
-  }
-
-  document.getElementById("password").innerText =
-    "Wygenerowane hasło: " + password;
-};
+    document.getElementById("result").value = password;
+}
